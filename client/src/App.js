@@ -8,11 +8,14 @@ import {
 //pages
 import LayoutPage from "./pages/layoutPage/layoutPage.jsx"
 import HomePage from "./pages/home/homePage.jsx"
+import ProfilePage from "./pages/profile/profilePage.jsx"
+import RankingPage from "./pages/ranking/rankingPage.jsx"
+import BldPage from './pages/bld/bldPage.jsx';
+import CornersPage from "./pages/corners/cornersPage.jsx"
+import EdgesPage from "./pages/edges/edgesPage.jsx"
+import MbldPage from "./pages/mbld/mbldPage.jsx"
 import LoginPage from "./pages/login/loginPage.jsx"
-
-const BldPage = () => {
-  return <h1>BLD</h1>
-}
+import NotFoundPage from './pages/notFoundPage.jsx';
 
 function App() {
   return (
@@ -21,7 +24,13 @@ function App() {
         <Route path="/" element={<LayoutPage />}>
           <Route path="/" element={<Navigate to="/home" />} />
           <Route index path="home" element={<HomePage />} />
+          <Route path="profile" element={<ProfilePage />} />
+          <Route path="ranking" element={<RankingPage />} />
           <Route path="bld" element={<BldPage />} />
+          <Route path="corners" element={<CornersPage />} />
+          <Route path="edges" element={<EdgesPage />} />
+          <Route path="mbld" element={<MbldPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
         <Route path="/login" element={<LoginPage />} />
       </Routes>
