@@ -1,17 +1,12 @@
 import React from "react";
 
-import Layout from "../../components/layout/layout.component";
-
-import { Outlet } from "react-router-dom";
+import "./homePage.styles.scss";
 
 const HomePage = () => {
   return (
-    <Layout>
-      <div>
-        <h1>Welcome to the Bo3 BLD Trainer</h1>
-        <Outlet />
-      </div>
-    </Layout>
+    <div className="homePage-container">
+      <h1>home</h1>
+    </div>
   );
 };
 

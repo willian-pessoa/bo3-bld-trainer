@@ -1,9 +1,36 @@
-.custom-nav{
-  background-color: #827717;
-  color: #f9fbe7;
-  font-weight: 400;
-}
+.layout-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #f0f4c3;
 
-.custom-nav:hover{
-  color: #f9fbe7;
+  .custom-nav {
+    background-color: #827717;
+    color: #f9fbe7;
+    font-weight: 400;
+  }
+
+  .custom-nav:focus{
+    background-color: #f0f4c3;
+    color: black;
+  }
+
+  .custom-nav:active{
+    background-color: #f0f4c3;
+  }
+  
+  .custom-nav:hover {
+    background-color: #f0f4c3;
+    color: black;
+  }
+
+  .footer-container{
+    background-color: #827717;
+    color: #f9fbe7;
+    font-weight: 100;
+    text-align: center;
+    margin-top: auto;
+  }
 }
