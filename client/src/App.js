@@ -5,7 +5,7 @@ import {
   Navigate
 } from "react-router-dom";
 
-//pages
+//Main Pages
 import LayoutPage from "./pages/layoutPage/layoutPage.jsx"
 import HomePage from "./pages/home/homePage.jsx"
 import ProfilePage from "./pages/profile/profilePage.jsx"
@@ -16,6 +16,8 @@ import EdgesPage from "./pages/edges/edgesPage.jsx"
 import MbldPage from "./pages/mbld/mbldPage.jsx"
 import LoginPage from "./pages/login/loginPage.jsx"
 import NotFoundPage from './pages/notFoundPage.jsx';
+
+//Sub Pages
 
 function App() {
   return (
