@@ -6,6 +6,14 @@
   flex: 1;
   background-color: #f0f4c3;
 
+  .layout-body{
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f4c3;
+  }
+
   .custom-nav {
     background-color: #827717;
     color: #f9fbe7;

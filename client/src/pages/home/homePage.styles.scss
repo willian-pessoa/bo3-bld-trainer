@@ -1,28 +1,36 @@
 .homePage-container {
   width: 100%;
-  height: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  min-height: 100%;
+
+  h2{
+    margin: 40px;
+    text-align: center;
+  }
 
   .home-card-group {
     padding: 10px;
     width: 80%;
 
-    .card-container{
+    .card-container {
       display: flex;
       padding-top: 8px;
       align-items: center;
       justify-content: center;
-      background-color:  #827717;
-      color:  #f9fbe7;
+      background-color: #827717;
+      color: #f9fbe7;
       text-align: center;
       height: 270px;
     }
 
-    .card-container:hover{
+    .card-container:hover {
       cursor: pointer;
+      background-color: #f0f4c3;
+      color: black;
     }
 
     .img-container {
@@ -38,5 +46,17 @@
         object-fit: cover;
       }
     }
+  }
+
+  .button-style {
+    margin-bottom: 20px;
+    background-color: #827717;
+    border: grey 0.5px solid;
+  }
+
+  .button-style:hover {
+    cursor: pointer;
+    background-color: #f0f4c3;
+    color: black;
   }
 }

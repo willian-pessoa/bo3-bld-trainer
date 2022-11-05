@@ -9,9 +9,7 @@ const LayoutPage = () => {
   return (
     <div>
       <Layout>
-        <div className="layoutPage-container">
           <Outlet />
-        </div>
       </Layout>
     </div>
   );

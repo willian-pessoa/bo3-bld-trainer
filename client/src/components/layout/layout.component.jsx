@@ -52,10 +52,8 @@ const Layout = ({ children }) => {
           </Nav.Item>
         </Nav>
       </div>
-      {children}
-      <div className="footer-container">
-        @Willian Pessoa
-      </div>
+      <div className="layout-body">{children}</div>
+      <div className="footer-container">@Willian Pessoa</div>
     </div>
   );
 };
