@@ -1,0 +1,26 @@
+.profile-page-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+
+  h2{
+    margin: 50px;
+  }
+
+  .profile-infos{
+    height: auto;
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    img{
+      max-height: 150px;
+      object-fit: contain;
+    }
+  }
+}

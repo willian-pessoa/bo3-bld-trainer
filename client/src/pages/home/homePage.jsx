@@ -71,16 +71,15 @@ const HomePage = () => {
           fast solve to do the average of that session.
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
+          <Button variant="primary" onClick={handleClose}>
+            Understood
           </Button>
-          <Button variant="primary">Understood</Button>
         </Modal.Footer>
       </Modal>
       <div className="home-card-group">
         <Row xs={2} md={2} lg={4} className="g-4">
           {CARD_INFO.map(({ title, description, img }, idx) => (
-            <Col>
+            <Col key={idx}>
               <Card
                 onClick={() => handleCardNavigation(title)}
                 className="card-container"

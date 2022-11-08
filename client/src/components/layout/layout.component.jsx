@@ -6,7 +6,11 @@ import Dropdown from "react-bootstrap/Dropdown";
 import NavLink from "react-bootstrap/NavLink";
 import { NavItem } from "react-bootstrap";
 
+import { useSelector } from "react-redux";
+
 const Layout = ({ children }) => {
+  const isLogged = useSelector((state) => state.user.logged);
+
   return (
     <div className="layout-container">
       <div className="nav-container">
@@ -47,7 +51,7 @@ const Layout = ({ children }) => {
           </Dropdown>
           <Nav.Item>
             <Nav.Link className="custom-nav" href="/login" eventKey="login">
-              Login
+              {isLogged ? "Logout" : "Login"}
             </Nav.Link>
           </Nav.Item>
         </Nav>
