@@ -1,0 +1,40 @@
+.bld-page-container {
+  height: auto;
+  min-height: 400px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+
+  .config-container {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    justify-content: space-around;
+
+    input:checked {
+      background-color: #827717;
+      border-color: #827717;
+    }
+  }
+
+  .btn-bld-container {
+    width: 100%;
+    max-width: 250px;
+    display: flex;
+    justify-content: space-around;
+
+    button {
+      background-color: #827717;
+      border-color: #827717;
+    }
+
+    button:hover {
+      cursor: pointer;
+      background-color: #f0f4c3;
+      border-color: #827717;
+      color: black;
+    }
+  }
+}

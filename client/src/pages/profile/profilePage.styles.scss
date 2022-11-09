@@ -8,19 +8,24 @@
   min-height: 100%;
 
   h2{
-    margin: 50px;
+    margin: 40px;
   }
 
   .profile-infos{
     height: auto;
-    min-height: 240px;
+    min-height: 200px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 
     img{
-      max-height: 150px;
+      width: auto;
+      max-width: 100px;
+      max-height: 100px;
+      border-radius: 50%;
+      border: 1px solid #827717;
       object-fit: contain;
+      align-self: center;
     }
   }
 }
