@@ -6,27 +6,46 @@ import Dropdown from "react-bootstrap/Dropdown";
 import NavLink from "react-bootstrap/NavLink";
 import { NavItem } from "react-bootstrap";
 
+import { useNavigate } from "react-router-dom";
+
 import { useSelector } from "react-redux";
 
 const Layout = ({ children }) => {
   const isLogged = useSelector((state) => state.user.logged);
+  const navigate = useNavigate();
+
+  const handleNavigate = (route) => {
+    navigate(route);
+  };
 
   return (
     <div className="layout-container">
       <div className="nav-container">
         <Nav className="custom-nav" fill variant="tabs">
           <Nav.Item>
-            <Nav.Link className="custom-nav" href="/home">
+            <Nav.Link
+              className="custom-nav"
+              onClick={() => handleNavigate("/home")}
+              eventKey="home"
+            >
               Home
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link className="custom-nav" href="/profile" eventKey="profile">
+            <Nav.Link
+              className="custom-nav"
+              onClick={() => handleNavigate("/profile")}
+              eventKey="profile"
+            >
               Profile
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link className="custom-nav" href="/ranking" eventKey="ranking">
+            <Nav.Link
+              className="custom-nav"
+              onClick={() => handleNavigate("/ranking")}
+              eventKey="ranking"
+            >
               Ranking
             </Nav.Link>
           </Nav.Item>
@@ -35,22 +54,38 @@ const Layout = ({ children }) => {
               Practice Rooms
             </Dropdown.Toggle>
             <Dropdown.Menu>
-              <Dropdown.Item href="/bld" eventKey="BLD">
+              <Dropdown.Item
+                onClick={() => handleNavigate("/bld")}
+                eventKey="BLD"
+              >
                 BLD
               </Dropdown.Item>
-              <Dropdown.Item href="/edges" eventKey="Edges">
+              <Dropdown.Item
+                onClick={() => handleNavigate("/edges")}
+                eventKey="Edges"
+              >
                 Edges
               </Dropdown.Item>
-              <Dropdown.Item href="/corners" eventKey="Corners">
+              <Dropdown.Item
+                onClick={() => handleNavigate("/corners")}
+                eventKey="Corners"
+              >
                 Corners
               </Dropdown.Item>
-              <Dropdown.Item href="/mbld" eventKey="MBLD">
+              <Dropdown.Item
+                onClick={() => handleNavigate("/mbld")}
+                eventKey="MBLD"
+              >
                 MBLD
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
           <Nav.Item>
-            <Nav.Link className="custom-nav" href="/login" eventKey="login">
+            <Nav.Link
+              className="custom-nav"
+              onClick={() => handleNavigate("/login")}
+              eventKey="login"
+            >
               {isLogged ? "Logout" : "Login"}
             </Nav.Link>
           </Nav.Item>
