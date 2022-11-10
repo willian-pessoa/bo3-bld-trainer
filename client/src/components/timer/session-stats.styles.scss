@@ -1,5 +1,6 @@
 .session-stats{
   margin: 2px;
+  padding: 2px;
   width: 280px;
   background-color: #827717;
   color: #f9fbe7;
@@ -11,4 +12,26 @@
   font-size: 1.7rem;
   border: 3px solid #afb42b;
   border-radius: 10px;
+
+  .session-highlights{
+    font-size: 1.1rem;
+
+    th, td{
+      color: #f9fbe7;
+    }
+  }
+
+  .session-times{
+    width: 98%;
+    font-size: 1.1rem;
+    overflow-y: auto;
+
+    th, td{
+      color: #f9fbe7;
+    }
+  }
+
+  p{
+    margin: 8px;
+  }
 }

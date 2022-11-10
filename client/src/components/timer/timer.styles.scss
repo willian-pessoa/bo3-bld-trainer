@@ -11,12 +11,12 @@
   .top-container{
     width: 100%;
     display: flex;
-    flex: 1;
+    height: 50px;
   }
 
   .bottom-container{
     width: 100%;
     display: flex;
-    flex: 12;
+    height: calc(100vh - 50px)
   }
 }
