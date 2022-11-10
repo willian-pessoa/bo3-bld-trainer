@@ -4,6 +4,7 @@ import storage from "redux-persist/lib/storage";
 
 // slices
 import userReducer from "./userSlice/userSlice";
+import configTimerReducer from "./configTimerSlice/configTimerSlice";
 
 const persistConfig = {
     key: "root",
@@ -12,6 +13,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
     user: userReducer,
+    configTimer: configTimerReducer,
 })
 
 export default persistReducer(persistConfig, rootReducer)

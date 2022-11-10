@@ -6,16 +6,21 @@ import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
+import { useDispatch } from "react-redux";
+import { updateConfigTimer } from "../../redux/configTimerSlice/configTimerSlice";
+
 import "./session-config.styles.scss";
 
 const SessionConfig = ({ room, title }) => {
+  const dispatch = useDispatch();
+
   const [sessionConfigs, setSessionConfigs] = useState({
     room: room,
     twoPhases: false,
     showTime: false,
     bo3Session: 5,
   });
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleCheckBox = (event) => {
     switch (event.target.name) {
@@ -42,9 +47,10 @@ const SessionConfig = ({ room, title }) => {
     }
   };
 
-  const handleNavigate = (route) => {
-    navigate(route)
-  }
+  const handleStartSession = () => {
+    dispatch(updateConfigTimer(sessionConfigs));
+    navigate("/timer");
+  };
 
   return (
     <div className="room-container">
@@ -93,7 +99,7 @@ const SessionConfig = ({ room, title }) => {
       </div>
       <div className="btn-room-container">
         <Button>STATS</Button>
-        <Button onClick={()=>handleNavigate("/timer")} >START SESSION</Button>
+        <Button onClick={() => handleStartSession()}>START SESSION</Button>
       </div>
     </div>
   );

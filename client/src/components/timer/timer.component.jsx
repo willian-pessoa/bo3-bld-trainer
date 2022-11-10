@@ -7,15 +7,19 @@ import Clock from "./clock.component";
 import SessionStats from "./session-stats.component";
 import Scramble from "./scramble.component";
 
+import { useSelector } from "react-redux";
+
 const Timer = () => {
+  const configTimer = useSelector((state) => state.configTimer);
+
   return (
     <div className="timer-container">
       <div className="top-container">
         <BackButton />
-        <Scramble />
+        <Scramble scrambleType={configTimer.room}/>
       </div>
       <div className="bottom-container">
-        <SessionStats title="BLD SESSION" />
+        <SessionStats title={`${(configTimer.room).toUpperCase()} SESSION`}/>
         <Clock />
       </div>
     </div>

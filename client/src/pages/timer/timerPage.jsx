@@ -12,11 +12,12 @@ const style = {
   justifyContent: "center",
   width: "100vw",
   height: "100vh",
-  flexDirection: "column"
+  flexDirection: "column",
 };
 
 const TimerPage = () => {
   const isLogged = useSelector((state) => state.user.logged);
+
   return isLogged ? (
     <Timer />
   ) : (
