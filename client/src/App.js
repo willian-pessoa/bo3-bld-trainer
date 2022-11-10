@@ -15,6 +15,7 @@ import CornersPage from "./pages/corners/cornersPage.jsx"
 import EdgesPage from "./pages/edges/edgesPage.jsx"
 import MbldPage from "./pages/mbld/mbldPage.jsx"
 import LoginPage from "./pages/login/loginPage.jsx"
+import TimerPage from './pages/timer/timerPage.jsx';
 import NotFoundPage from './pages/notFoundPage.jsx';
 
 //Sub Pages
@@ -35,6 +36,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Route>
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/timer" element={<TimerPage />} />
       </Routes>
     </div>
   );
