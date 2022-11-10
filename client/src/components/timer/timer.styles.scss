@@ -1,0 +1,22 @@
+.timer-container{
+  width: 100vw;
+  height: 100vh;
+  background-color: #f0f4c3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: sans-serif;
+
+  .top-container{
+    width: 100%;
+    display: flex;
+    flex: 1;
+  }
+
+  .bottom-container{
+    width: 100%;
+    display: flex;
+    flex: 12;
+  }
+}
