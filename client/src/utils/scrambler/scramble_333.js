@@ -1,3 +1,6 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-expressions */
+/* jshint node: true */
 /*
 
 scramble_333.js
