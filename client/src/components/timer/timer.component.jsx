@@ -16,7 +16,7 @@ const Timer = () => {
     <div className="timer-container">
       <div className="top-container">
         <BackButton />
-        <Scramble scrambleType={configTimer.room}/>
+        <Scramble scrambleType={configTimer.room} numberOfCubes={configTimer.numberOfCubes}/>
       </div>
       <div className="bottom-container">
         <SessionStats title={`${(configTimer.room).toUpperCase()} SESSION`}/>

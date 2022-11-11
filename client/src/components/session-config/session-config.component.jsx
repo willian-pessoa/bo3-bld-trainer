@@ -19,6 +19,7 @@ const SessionConfig = ({ room, title }) => {
     twoPhases: false,
     showTime: false,
     bo3Session: 5,
+    numberOfCubes: 2,
   });
   const navigate = useNavigate();
 
@@ -47,6 +48,13 @@ const SessionConfig = ({ room, title }) => {
     }
   };
 
+  const handleNumberOfCubes = (event) => {
+    setSessionConfigs((prev) => ({
+      ...prev,
+      numberOfCubes: event.target.value,
+    }));
+  };
+
   const handleStartSession = () => {
     dispatch(updateConfigTimer(sessionConfigs));
     navigate("/timer");
@@ -71,6 +79,21 @@ const SessionConfig = ({ room, title }) => {
               onChange={handleCheckBox}
               type="checkbox"
               label="Show time solving"
+            />
+          </Form.Group>
+          <Form.Group
+            hidden={sessionConfigs.room !== "mbld"}
+            className="mb-3"
+            controlId="formBasicNumber"
+          >
+            <Form.Label>Number of Cubes</Form.Label>
+            <Form.Control
+              onChange={(e) => handleNumberOfCubes(e)}
+              className="input-number"
+              type="number"
+              min="2"
+              max="99"
+              value={sessionConfigs.numberOfCubes}
             />
           </Form.Group>
           <Form.Group

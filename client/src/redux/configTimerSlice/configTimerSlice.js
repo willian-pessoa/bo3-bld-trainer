@@ -5,6 +5,7 @@ const initialState = {
   twoPhases: false,
   showTime: false,
   bo3Session: 5,
+  numberOfCubes: 1,
 }
 
 export const configTimerSlice = createSlice({

@@ -1,4 +1,4 @@
-.scramble{
+.scramble {
   margin: 2px;
   width: 90%;
   background-color: #827717;
@@ -11,12 +11,16 @@
   border: 3px solid #afb42b;
   border-radius: 10px;
 
-  .next{
+  .mbld:hover {
+    cursor: pointer;
+  }
+
+  .next {
     padding: 0 20px;
     font-size: 1rem;
   }
-  
-  .next:hover{
+
+  .next:hover {
     cursor: pointer;
   }
 }
