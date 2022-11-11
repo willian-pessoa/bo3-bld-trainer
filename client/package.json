@@ -32,7 +32,9 @@
       "react-app",
       "react-app/jest"
     ],
-    "globals": { "_": true }
+    "globals": {
+      "_": true
+    }
   },
   "browserslist": {
     "production": [

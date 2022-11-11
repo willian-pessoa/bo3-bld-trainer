@@ -1,13 +1,33 @@
-import React from 'react'
+import React from "react";
+import { useState } from "react";
 
-import "./clock.styles.scss"
+import { useStopWatch } from "../../hooks/useStopwatche";
+
+import "./clock.styles.scss";
 
 const Clock = () => {
-  return (
-    <div className='clock'>
-      00:00
-    </div>
-  )
-}
+  const [solves, setSolves] = useState([])
+  const [isActive, setIsActive] = useState(false);
+  const {
+    // actions
+    start,
+    stop,
+    reset,
+    lap,
+    // data
+    isRunning,
+    time,
+    // lap data
+    laps,
+    currentLapTime,
+    hasStarted,
+    slowestLapTime,
+    fastestLapTime,
+  } = useStopWatch();
 
-export default Clock
+  
+
+  return <div className={`${isActive ? "clock-active" : "clock"}`}>00:00</div>;
+};
+
+export default Clock;
