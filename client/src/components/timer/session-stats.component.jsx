@@ -2,9 +2,15 @@ import React from "react";
 
 import Table from "react-bootstrap/Table";
 
+import { useSelector } from "react-redux";
+
 import "./session-stats.styles.scss";
 
-const SessionStats = ({ title }) => {
+const SessionStats = ({ title, isTwoPhases }) => {
+  const solves = useSelector((state) => state.solves.solves);
+
+  console.log(solves);
+
   return (
     <div className="session-stats">
       <p>{title}</p>
@@ -43,65 +49,29 @@ const SessionStats = ({ title }) => {
             <tr>
               <th>#</th>
               <th>Time</th>
-              <th>Memo</th>
-              <th>Exec</th>
+              {isTwoPhases && (
+                <>
+                  <th>Memo</th>
+                  <th>Exec</th>
+                </>
+              )}
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th>1</th>
-              <th>00:00</th>
-              <th>00:00</th>
-              <th>00:00</th>
-            </tr>
-            <tr>
-              <th>2</th>
-              <th>00:00</th>
-              <th>00:00</th>
-              <th>00:00</th>
-            </tr>
-            <tr>
-              <th>3</th>
-              <th>00:00</th>
-              <th>00:00</th>
-              <th>00:00</th>
-            </tr>
-            <tr>
-              <th>4</th>
-              <th>00:00</th>
-              <th>00:00</th>
-              <th>00:00</th>
-            </tr>
-            <tr>
-              <th>5</th>
-              <th>00:00</th>
-              <th>00:00</th>
-              <th>00:00</th>
-            </tr>
-            <tr>
-              <th>6</th>
-              <th>00:00</th>
-              <th>00:00</th>
-              <th>00:00</th>
-            </tr>
-            <tr>
-              <th>7</th>
-              <th>00:00</th>
-              <th>00:00</th>
-              <th>00:00</th>
-            </tr>
-            <tr>
-              <th>8</th>
-              <th>00:00</th>
-              <th>00:00</th>
-              <th>00:00</th>
-            </tr>
-            <tr>
-              <th>9</th>
-              <th>00:00</th>
-              <th>00:00</th>
-              <th>00:00</th>
-            </tr>
+            {solves.map(({ id, time, memo, exec, dnf, plus2 }, idx) => {
+              return (
+                <tr key={idx}>
+                  <th>{id}</th>
+                  <th>{dnf ? "DNF" : time}</th>
+                  {isTwoPhases && (
+                    <>
+                      <th>{memo}</th>
+                      <th>{exec}</th>
+                    </>
+                  )}
+                </tr>
+              );
+            })}
           </tbody>
         </Table>
       </div>

@@ -16,11 +16,14 @@ const Timer = () => {
     <div className="timer-container">
       <div className="top-container">
         <BackButton />
-        <Scramble scrambleType={configTimer.room} numberOfCubes={configTimer.numberOfCubes}/>
+        <Scramble
+          scrambleType={configTimer.room}
+          numberOfCubes={configTimer.numberOfCubes}
+        />
       </div>
       <div className="bottom-container">
-        <SessionStats title={`${(configTimer.room).toUpperCase()} SESSION`}/>
-        <Clock />
+        <SessionStats isTwoPhases={configTimer.twoPhases} title={`${configTimer.room.toUpperCase()} SESSION`} />
+        <Clock bo3Session={configTimer.bo3Session} isTwoPhases={configTimer.twoPhases} />
       </div>
     </div>
   );
