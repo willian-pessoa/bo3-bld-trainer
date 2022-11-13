@@ -17,7 +17,7 @@ const SessionConfig = ({ room, title }) => {
   const [sessionConfigs, setSessionConfigs] = useState({
     room: room,
     twoPhases: false,
-    showTime: false,
+    showTime: true,
     bo3Session: 5,
     numberOfCubes: 2,
   });
@@ -75,6 +75,7 @@ const SessionConfig = ({ room, title }) => {
               label="2 Phases timer (memo/execution)"
             />
             <Form.Check
+              checked={sessionConfigs.showTime}
               name="showTime"
               onChange={handleCheckBox}
               type="checkbox"

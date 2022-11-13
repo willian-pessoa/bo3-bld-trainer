@@ -6,10 +6,16 @@ import Modal from "react-bootstrap/Modal";
 
 import "./scramble.styles.scss";
 
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { updateCurrentScramble } from "../../redux/solvesSlice/solvesSlice";
+
 import { getScrambles } from "../../utils/scrambler/scrambler";
 
 const Scramble = ({ scrambleType, numberOfCubes }) => {
-  const [scramble, setScramble] = useState([""]);
+  const dispatch = useDispatch();
+  const changeScramble = useSelector((state) => state.solves.changeScramble);
+  const currentScramble = useSelector((state) => state.solves.currentScramble);
   const [next, setNext] = useState(true);
   const [show, setShow] = useState(false);
 
@@ -21,32 +27,37 @@ const Scramble = ({ scrambleType, numberOfCubes }) => {
     for (let i = 0; i < amount; i++) {
       arrayScrambles.push(getScrambles.getScramble());
     }
-    setScramble(arrayScrambles);
+    dispatch(updateCurrentScramble(arrayScrambles));
   };
 
   useEffect(() => {
-    switch (scrambleType) {
-      case "bld":
-        setScramble([getScrambles.getScramble()]);
-        break;
-      case "edges":
-        setScramble([getScrambles.getEdgeScramble()]);
-        break;
-      case "corners":
-        setScramble([getScrambles.getCornerScramble()]);
-        break;
-      case "mbld":
-        getNScrambles(numberOfCubes);
-        break;
-      default:
-        setScramble(getScrambles.getScramble());
+    if (changeScramble) {
+      switch (scrambleType) {
+        case "bld":
+          const bldScramble = getScrambles.getScramble();
+          dispatch(updateCurrentScramble([bldScramble]));
+          break;
+        case "edges":
+          const edgesScramble = getScrambles.getEdgeScramble();
+          dispatch(updateCurrentScramble([edgesScramble]));
+          break;
+        case "corners":
+          const cornersScramble = getScrambles.getCornerScramble();
+          dispatch(updateCurrentScramble([cornersScramble]));
+          break;
+        case "mbld":
+          getNScrambles(numberOfCubes);
+          break;
+        default:
+          return;
+      }
     }
-  }, [scrambleType, next, numberOfCubes]);
+  }, [scrambleType, next, numberOfCubes, changeScramble]);
 
   return (
     <div className="scramble">
       {scrambleType !== "mbld" ? (
-        scramble[0]
+        currentScramble[0]
       ) : (
         <div onClick={handleShow} className="mbld">
           Show Scrambles
@@ -70,8 +81,8 @@ const Scramble = ({ scrambleType, numberOfCubes }) => {
           <Modal.Title>Scrambles</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {scramble.map((item, idx) => {
-            return <p key={idx}>{idx+1 + ") " + item}</p>;
+          {currentScramble.map((item, idx) => {
+            return <p key={idx}>{idx + 1 + ") " + item}</p>;
           })}
         </Modal.Body>
         <Modal.Footer>

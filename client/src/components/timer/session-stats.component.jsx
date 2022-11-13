@@ -58,7 +58,7 @@ const SessionStats = ({ title, isTwoPhases }) => {
             </tr>
           </thead>
           <tbody>
-            {solves.map(({ id, time, memo, exec, dnf, plus2 }, idx) => {
+            {solves.slice(0).reverse().map(({ id, time, memo, exec, dnf, plus2 }, idx) => {
               return (
                 <tr key={idx}>
                   <th>{id}</th>

@@ -23,7 +23,7 @@ const Timer = () => {
       </div>
       <div className="bottom-container">
         <SessionStats isTwoPhases={configTimer.twoPhases} title={`${configTimer.room.toUpperCase()} SESSION`} />
-        <Clock bo3Session={configTimer.bo3Session} isTwoPhases={configTimer.twoPhases} />
+        <Clock showTime={configTimer.showTime} bo3Session={configTimer.bo3Session} isTwoPhases={configTimer.twoPhases} />
       </div>
     </div>
   );

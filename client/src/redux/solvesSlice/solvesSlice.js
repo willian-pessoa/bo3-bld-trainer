@@ -9,11 +9,14 @@ format times
     exec: "00:00.00",
     dnf: false,
     plus2: false,
+    scramble: [String],
   }
 */
 
 const initialState = {
-  solves: []
+  currentScramble: [""],
+  solves: [],
+  changeScramble: true,
 }
 
 export const solvesSlice = createSlice({
@@ -21,19 +24,31 @@ export const solvesSlice = createSlice({
   initialState,
   reducers: {
     insertTime: (state, action) => {
-      //const tempArr = state.solves
-      //tempArr.push(action.payload)
       return {
         ...state,
         solves: action.payload
       }
     },
+    updateCurrentScramble: (state, action) => {
+      return {
+        ...state,
+        currentScramble: action.payload
+      }
+    },
+    updateChangeScramble: (state, action) => {
+      return {
+        ...state,
+        changeScramble: action.payload
+      }
+    }
   }
 })
 
 // Action creators are generated for each case reducer function
 export const {
   insertTime,
+  updateCurrentScramble,
+  updateChangeScramble,
 } = solvesSlice.actions
 
 export default solvesSlice.reducer
