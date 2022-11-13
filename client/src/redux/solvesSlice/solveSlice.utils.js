@@ -1,0 +1,3 @@
+const removeItemFromArrayByIndex = (arr, index) => {
+
+}

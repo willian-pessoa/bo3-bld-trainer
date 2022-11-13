@@ -40,6 +40,9 @@ export const solvesSlice = createSlice({
         ...state,
         changeScramble: action.payload
       }
+    },
+    removeSolveById: (state, action) => {
+      
     }
   }
 })

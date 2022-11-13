@@ -18,6 +18,18 @@
       cursor: pointer;
     }
   }
+
+  button {
+    background-color: #827717;
+    border-color: #827717;
+  }
+
+  button:hover {
+    cursor: pointer;
+    background-color: #f0f4c3;
+    border-color: #827717;
+    color: black;
+  }
 }
 
 .clock-active {
@@ -30,4 +42,9 @@
   justify-content: center;
   align-items: center;
   font-size: 5rem;
+
+  button{
+    display: none;
+  }
 }
+

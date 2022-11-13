@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
+import { useNavigate } from "react-router-dom";
+
 import { useStopWatch } from "../../hooks/useStopwatche";
 import { useKeyPress } from "../../hooks/useKeyPress";
 
@@ -9,9 +11,12 @@ import { useDispatch } from "react-redux";
 import { insertTime } from "../../redux/solvesSlice/solvesSlice";
 import { updateChangeScramble } from "../../redux/solvesSlice/solvesSlice";
 
+import Button from "react-bootstrap/Button";
+
 import "./clock.styles.scss";
 
 const Clock = ({ isTwoPhases, bo3Session, showTime }) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const currentScramble = useSelector((state) => state.solves.currentScramble);
   const spacePressed = useKeyPress(" ");
@@ -58,7 +63,19 @@ const Clock = ({ isTwoPhases, bo3Session, showTime }) => {
     setSolves(tempArr);
   };
 
+  const handleSaveSession = () => {
+    // TODO
+    // Save the solves in a DB
+    setSolves([]);
+    navigate(-1);
+  };
+
+  // Stopwatch logic
   useEffect(() => {
+    if (solves.length === bo3Session) {
+      return;
+    }
+
     if (spacePressed && timesSpacePressed === 0) {
       setTimesSpacePressed(1);
     }
@@ -113,6 +130,7 @@ const Clock = ({ isTwoPhases, bo3Session, showTime }) => {
           {spacePressed || timesSpacePressed ? "" : "+2"}
         </div>
       </div>
+      {solves.length === bo3Session && <Button onClick={() => handleSaveSession()}>Save Session</Button>}
     </div>
   );
 };

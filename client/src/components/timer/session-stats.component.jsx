@@ -4,6 +4,8 @@ import { useState } from "react";
 import Table from "react-bootstrap/Table";
 import SolveModal from "./solve-modal.component";
 
+import { ImCross } from "react-icons/im";
+
 import { useSelector } from "react-redux";
 
 import "./session-stats.styles.scss";
@@ -14,10 +16,14 @@ const SessionStats = ({ title, isTwoPhases }) => {
   const [modalSolve, setModalSolve] = useState({});
 
   const handleModalShow = (solve) => {
-    console.log(solve)
+    console.log(solve);
     setModalShow(true);
     setModalSolve(solve);
   };
+
+  const handleDeleteSolve = () => {
+    
+  }
 
   return (
     <div className="session-stats">
@@ -63,6 +69,7 @@ const SessionStats = ({ title, isTwoPhases }) => {
                   <th>Exec</th>
                 </>
               )}
+              <th><ImCross/></th>
             </tr>
           </thead>
           <tbody>
@@ -80,6 +87,7 @@ const SessionStats = ({ title, isTwoPhases }) => {
                         <th>{solve.exec}</th>
                       </>
                     )}
+                    <th onClick={()=>handleDeleteSolve()}><ImCross/></th>
                   </tr>
                 );
               })}
