@@ -1,6 +1,8 @@
 import React from "react";
+import { useState } from "react";
 
 import Table from "react-bootstrap/Table";
+import SolveModal from "./solve-modal.component";
 
 import { useSelector } from "react-redux";
 
@@ -8,8 +10,14 @@ import "./session-stats.styles.scss";
 
 const SessionStats = ({ title, isTwoPhases }) => {
   const solves = useSelector((state) => state.solves.solves);
+  const [modalShow, setModalShow] = useState(false);
+  const [modalSolve, setModalSolve] = useState({});
 
-  console.log(solves);
+  const handleModalShow = (solve) => {
+    console.log(solve)
+    setModalShow(true);
+    setModalSolve(solve);
+  };
 
   return (
     <div className="session-stats">
@@ -58,23 +66,31 @@ const SessionStats = ({ title, isTwoPhases }) => {
             </tr>
           </thead>
           <tbody>
-            {solves.slice(0).reverse().map(({ id, time, memo, exec, dnf, plus2 }, idx) => {
-              return (
-                <tr key={idx}>
-                  <th>{id}</th>
-                  <th>{dnf ? "DNF" : time}</th>
-                  {isTwoPhases && (
-                    <>
-                      <th>{memo}</th>
-                      <th>{exec}</th>
-                    </>
-                  )}
-                </tr>
-              );
-            })}
+            {solves
+              .slice(0)
+              .reverse()
+              .map((solve, idx) => {
+                return (
+                  <tr onClick={() => handleModalShow(solve)} key={idx}>
+                    <th>{solve.id}</th>
+                    <th>{solve.dnf ? "DNF" : solve.time}</th>
+                    {isTwoPhases && (
+                      <>
+                        <th>{solve.memo}</th>
+                        <th>{solve.exec}</th>
+                      </>
+                    )}
+                  </tr>
+                );
+              })}
           </tbody>
         </Table>
       </div>
+      <SolveModal
+        solve={modalSolve}
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
     </div>
   );
 };

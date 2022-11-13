@@ -104,13 +104,13 @@ const Clock = ({ isTwoPhases, bo3Session, showTime }) => {
         spacePressed || timesSpacePressed ? "clock-active" : "clock"
       }`}
     >
-      {showTime && time}
+      {spacePressed || timesSpacePressed ? (showTime ? time : "...") : time}
       <div className="time-changers">
         <div onClick={() => handleTimeChangers("dnf")} className="dnf-button">
-          DNF
+          {spacePressed || timesSpacePressed ? "" : "DNF"}
         </div>
         <div onClick={() => handleTimeChangers("plus2")} className="dnf-button">
-          +2
+          {spacePressed || timesSpacePressed ? "" : "+2"}
         </div>
       </div>
     </div>
