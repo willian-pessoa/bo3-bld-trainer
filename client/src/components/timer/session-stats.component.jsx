@@ -4,6 +4,7 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import SolveModal from "./solve-modal.component";
+import SessionDetailsModal from "./session-details-modal.component";
 
 import { ImCross } from "react-icons/im";
 
@@ -19,12 +20,17 @@ const SessionStats = ({ title, isTwoPhases }) => {
   const dispath = useDispatch();
   const solves = useSelector((state) => state.solves.solves);
   const [modalShow, setModalShow] = useState(false);
+  const [showSessionDetailsModal, setShowSessionDetailsModal] = useState(false);
   const [modalSolve, setModalSolve] = useState({});
 
   const handleModalShow = (solve) => {
     console.log(solve);
     setModalShow(true);
     setModalSolve(solve);
+  };
+
+  const handleSessionDetailsModal = () => {
+    setShowSessionDetailsModal(true);
   };
 
   const handleDeleteSolve = (solveId) => {
@@ -35,7 +41,9 @@ const SessionStats = ({ title, isTwoPhases }) => {
     <div className="session-stats">
       <div className="session-highlights">
         <p>{title}</p>
-        <Button>Session Details</Button>
+        <Button onClick={() => handleSessionDetailsModal()}>
+          Session Details
+        </Button>
       </div>
       <div className="session-times">
         <p>Solves</p>
@@ -91,6 +99,11 @@ const SessionStats = ({ title, isTwoPhases }) => {
         solve={modalSolve}
         show={modalShow}
         onHide={() => setModalShow(false)}
+      />
+      <SessionDetailsModal
+        solves={solves}
+        showSessionDetailsModal={showSessionDetailsModal}
+        setShowSessionDetailsModal={setShowSessionDetailsModal}
       />
     </div>
   );

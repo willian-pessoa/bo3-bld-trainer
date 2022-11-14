@@ -5,11 +5,13 @@ import Modal from "react-bootstrap/Modal";
 
 import "./solve-modal.styles.scss";
 
+import { formatMs } from "../../hooks/useStopwatche";
+
 const SolveModal = ({ solve, ...props }) => {
   return (
     <Modal
       {...props}
-      size="lg"
+      size="md"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
@@ -23,7 +25,14 @@ const SolveModal = ({ solve, ...props }) => {
           solve["scramble"].map((item, idx) => {
             return <p key={idx}>{item}</p>;
           })}
-        <p>Time: {solve.time}</p>
+        <p>
+          Time:{" "}
+          {solve.dnf
+            ? "DNF"
+            : solve.plus2
+            ? formatMs(solve.milliseconds + 2000) + "+"
+            : solve.time}
+        </p>
         {solve.memo && <p>Memo: {solve.memo}</p>}
         {solve.exec !== solve.time && <p>Exec: {solve.exec}</p>}
       </Modal.Body>
