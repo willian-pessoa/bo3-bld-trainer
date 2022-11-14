@@ -11,6 +11,8 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { removeSolveById } from "../../redux/solvesSlice/solvesSlice";
 
+import { formatMs } from "../../hooks/useStopwatche";
+
 import "./session-stats.styles.scss";
 
 const SessionStats = ({ title, isTwoPhases }) => {
@@ -60,9 +62,15 @@ const SessionStats = ({ title, isTwoPhases }) => {
               .map((solve, idx) => {
                 return (
                   <tr key={idx}>
-                    <th onClick={() => handleModalShow(solve)}>{solves.length - idx}</th>
                     <th onClick={() => handleModalShow(solve)}>
-                      {solve.dnf ? "DNF" : solve.time}
+                      {solves.length - idx}
+                    </th>
+                    <th onClick={() => handleModalShow(solve)}>
+                      {solve.dnf
+                        ? "DNF"
+                        : solve.plus2
+                        ? formatMs(solve.milliseconds + 2000) + "+"
+                        : solve.time}
                     </th>
                     {isTwoPhases && (
                       <>

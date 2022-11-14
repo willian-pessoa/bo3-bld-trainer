@@ -32,6 +32,7 @@ const Clock = ({ isTwoPhases, bo3Session, showTime }) => {
     // data
     isRunning,
     time,
+    milliseconds,
     // lap data
     laps,
     currentLapTime,
@@ -57,6 +58,7 @@ const Clock = ({ isTwoPhases, bo3Session, showTime }) => {
       id: id,
       scramble: currentScramble,
       time: time,
+      milliseconds: milliseconds,
       memo: isTwoPhases && laps[0].time,
       exec: currentLapTime,
       dnf: false,

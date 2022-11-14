@@ -6,6 +6,7 @@ import { removeItemFromArrayByIndex, findIndexSolveById } from './solveSlice.uti
 format times
 {
     id: 0,
+    milliseconds: Number
     time: "00:00.00",
     memo: "00:00.00",
     exec: "00:00.00",

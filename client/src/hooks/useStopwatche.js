@@ -4,7 +4,7 @@ const padStart = (num) => {
   return num.toString().padStart(2, "0")
 }
 
-const formatMs = (milliseconds) => {
+export const formatMs = (milliseconds) => {
   let seconds = Math.floor(milliseconds / 1000)
   let minutes = Math.floor(seconds / 60)
   let hours = Math.floor(minutes / 60)
@@ -90,6 +90,7 @@ export const useStopWatch = () => {
 
     isRunning,
     time: formatMs(time),
+    milliseconds: time,
 
     laps: formattedLapData,
     currentLapTime: laps[0] ? formatMs(time - laps[0]) : formatMs(time),
