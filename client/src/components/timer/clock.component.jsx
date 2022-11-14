@@ -51,8 +51,10 @@ const Clock = ({ isTwoPhases, bo3Session, showTime }) => {
 
   const updateSolves = () => {
     const tempArr = JSON.parse(JSON.stringify(solves));
+    const lastIndex = tempArr.length - 1;
+    const id = lastIndex === -1 ? 1 : tempArr[lastIndex].id + 1 
     tempArr.push({
-      id: tempArr.length + 1,
+      id: id,
       scramble: currentScramble,
       time: time,
       memo: isTwoPhases && laps[0].time,
@@ -123,6 +125,7 @@ const Clock = ({ isTwoPhases, bo3Session, showTime }) => {
         spacePressed || timesSpacePressed ? "clock-active" : "clock"
       }`}
     >
+      <span className="space-tooltip">press SPACE to start</span>
       {spacePressed || timesSpacePressed ? (showTime ? time : "...") : time}
       <div className="time-changers">
         <div onClick={() => handleTimeChangers("dnf")} className="dnf-button">

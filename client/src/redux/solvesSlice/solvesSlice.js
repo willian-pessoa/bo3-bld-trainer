@@ -44,9 +44,10 @@ export const solvesSlice = createSlice({
       }
     },
     removeSolveById: (state, action) => {
-      const index = findIndexSolveById(state.solves, action.payload)
-      const newSolvesState = removeItemFromArrayByIndex(state.solves, index)
-      return{
+      const tempStateSolves = JSON.parse(JSON.stringify(state.solves))
+      const index = findIndexSolveById(tempStateSolves, action.payload)
+      const newSolvesState = removeItemFromArrayByIndex(tempStateSolves, index)
+      return {
         ...state,
         solves: newSolvesState
       }

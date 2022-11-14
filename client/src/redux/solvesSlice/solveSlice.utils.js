@@ -5,6 +5,6 @@ export const removeItemFromArrayByIndex = (arr, index) => {
 }
 
 export const findIndexSolveById = (arrSolve, id) => {
-  const indexSolve = arrSolve.findIndex(solve => solve.id = id)
+  const indexSolve = arrSolve.findIndex(solve => solve.id === id)
   return indexSolve
 }
