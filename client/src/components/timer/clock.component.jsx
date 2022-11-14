@@ -21,7 +21,8 @@ const Clock = ({ isTwoPhases, bo3Session, showTime }) => {
   const currentScramble = useSelector((state) => state.solves.currentScramble);
   const spacePressed = useKeyPress(" ");
   const [timesSpacePressed, setTimesSpacePressed] = useState(0);
-  const [solves, setSolves] = useState([]);
+  const solves = useSelector((state) => state.solves.solves)
+  //const [solves, setSolves] = useState([]);
   const {
     // actions
     start,
@@ -45,7 +46,7 @@ const Clock = ({ isTwoPhases, bo3Session, showTime }) => {
     }
     tempArr[lastItem][change] = !tempArr[lastItem][change];
     dispatch(insertTime(tempArr));
-    setSolves(tempArr);
+    //setSolves(tempArr);
   };
 
   const updateSolves = () => {
@@ -60,13 +61,14 @@ const Clock = ({ isTwoPhases, bo3Session, showTime }) => {
       plus2: false,
     });
     dispatch(insertTime(tempArr));
-    setSolves(tempArr);
+    //setSolves(tempArr);
   };
 
   const handleSaveSession = () => {
     // TODO
     // Save the solves in a DB
-    setSolves([]);
+    //setSolves([]);
+    dispatch(insertTime([]));
     navigate(-1);
   };
 

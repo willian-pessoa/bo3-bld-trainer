@@ -7,10 +7,13 @@ import SolveModal from "./solve-modal.component";
 import { ImCross } from "react-icons/im";
 
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { removeSolveById } from "../../redux/solvesSlice/solvesSlice";
 
 import "./session-stats.styles.scss";
 
 const SessionStats = ({ title, isTwoPhases }) => {
+  const dispath = useDispatch()
   const solves = useSelector((state) => state.solves.solves);
   const [modalShow, setModalShow] = useState(false);
   const [modalSolve, setModalSolve] = useState({});
@@ -21,8 +24,8 @@ const SessionStats = ({ title, isTwoPhases }) => {
     setModalSolve(solve);
   };
 
-  const handleDeleteSolve = () => {
-    
+  const handleDeleteSolve = (solveId) => {
+    dispath(removeSolveById(solveId))
   }
 
   return (
@@ -56,7 +59,7 @@ const SessionStats = ({ title, isTwoPhases }) => {
           </tbody>
         </Table>
       </div>
-      <p>Solves x / y</p>
+      <p>Solves</p>
       <div className="session-times">
         <Table bordered size="sm">
           <thead>
@@ -78,16 +81,16 @@ const SessionStats = ({ title, isTwoPhases }) => {
               .reverse()
               .map((solve, idx) => {
                 return (
-                  <tr onClick={() => handleModalShow(solve)} key={idx}>
-                    <th>{solve.id}</th>
-                    <th>{solve.dnf ? "DNF" : solve.time}</th>
+                  <tr key={idx}>
+                    <th onClick={() => handleModalShow(solve)}>{solve.id}</th>
+                    <th onClick={() => handleModalShow(solve)}>{solve.dnf ? "DNF" : solve.time}</th>
                     {isTwoPhases && (
                       <>
                         <th>{solve.memo}</th>
                         <th>{solve.exec}</th>
                       </>
                     )}
-                    <th onClick={()=>handleDeleteSolve()}><ImCross/></th>
+                    <th onClick={()=>handleDeleteSolve(solve.id)}><ImCross/></th>
                   </tr>
                 );
               })}

@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+import { removeItemFromArrayByIndex, findIndexSolveById } from './solveSlice.utils'
+
 /*
 format times
 {
@@ -42,7 +44,12 @@ export const solvesSlice = createSlice({
       }
     },
     removeSolveById: (state, action) => {
-      
+      const index = findIndexSolveById(state.solves, action.payload)
+      const newSolvesState = removeItemFromArrayByIndex(state.solves, index)
+      return{
+        ...state,
+        solves: newSolvesState
+      }
     }
   }
 })
@@ -52,6 +59,7 @@ export const {
   insertTime,
   updateCurrentScramble,
   updateChangeScramble,
+  removeSolveById,
 } = solvesSlice.actions
 
 export default solvesSlice.reducer
