@@ -1,7 +1,9 @@
 import React from "react";
-import { useState } from "react";
 
 import Modal from "react-bootstrap/Modal";
+import Bo3Table from "../bo3Table/bo3-table.component";
+
+import { parseSessionData } from "../../utils/parseSessionData";
 
 import "./session-details-modal.styles.scss";
 
@@ -21,7 +23,7 @@ const SessionDetailsModal = ({
           <Modal.Title>Session Details</Modal.Title>
         </Modal.Header>
         <Modal.Body className="session-modal-body">
-          Modal body content
+          <Bo3Table sessionSolvesObject={parseSessionData(solves)} />
         </Modal.Body>
       </Modal>
     </div>

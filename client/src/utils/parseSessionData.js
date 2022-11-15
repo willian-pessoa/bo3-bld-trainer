@@ -199,6 +199,7 @@ export const parseSessionData = (solves) => {
     data: [],
     averageBo3: 0,
     totalSuccess: 0,
+    averageMo3: 0,
   }
   const dataArr = []
   let countMedia = 1
@@ -250,7 +251,9 @@ export const parseSessionData = (solves) => {
   }
 
   let sumBo3 = 0
+  let sumMo3 = 0
   let totalBo3 = 0
+  let totalMo3 = 0
   let totalSuccess = 0
   for (let i in dataArr) {
     if (dataArr[i].bo3 !== "DNF") {
@@ -258,12 +261,16 @@ export const parseSessionData = (solves) => {
       totalSuccess += dataArr[i].success
       totalBo3++
     }
+    if (dataArr[i].mo3 !== "DNF") {
+      sumMo3 += dataArr[i].mo3
+      totalMo3++
+    }
   }
 
   parsedObject.data = dataArr
   parsedObject.averageBo3 = Math.floor(sumBo3 / totalBo3)
+  parsedObject.averageMo3 = Math.floor(sumMo3 / totalMo3)
   parsedObject.totalSuccess = totalSuccess
-  console.log(parsedObject)
   return parsedObject
 }
 

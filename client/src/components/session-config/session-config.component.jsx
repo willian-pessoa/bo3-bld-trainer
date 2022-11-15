@@ -6,13 +6,16 @@ import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { updateConfigTimer } from "../../redux/configTimerSlice/configTimerSlice";
+import { resetSolves } from "../../redux/solvesSlice/solvesSlice";
 
 import "./session-config.styles.scss";
 
 const SessionConfig = ({ room, title }) => {
   const dispatch = useDispatch();
+  const haveSessionStarted = useSelector((state) => state.solves.solves);
 
   const [sessionConfigs, setSessionConfigs] = useState({
     room: room,
@@ -55,9 +58,15 @@ const SessionConfig = ({ room, title }) => {
     }));
   };
 
-  const handleStartSession = () => {
-    dispatch(updateConfigTimer(sessionConfigs));
-    navigate("/timer");
+  const handleStartSession = (flag) => {
+    if (flag === "continue") {
+      navigate("/timer");
+    }
+    if (flag === "new") {
+      dispatch(updateConfigTimer(sessionConfigs));
+      dispatch(resetSolves());
+      navigate("/timer");
+    }
   };
 
   return (
@@ -123,8 +132,13 @@ const SessionConfig = ({ room, title }) => {
       </div>
       <div className="btn-room-container">
         <Button>STATS</Button>
-        <Button onClick={() => handleStartSession()}>START SESSION</Button>
+        <Button onClick={() => handleStartSession("new")}>START SESSION</Button>
       </div>
+      {haveSessionStarted.length !== 0 && (
+        <Button onClick={() => handleStartSession("continue")}>
+          CONTINUE SESSION
+        </Button>
+      )}
     </div>
   );
 };

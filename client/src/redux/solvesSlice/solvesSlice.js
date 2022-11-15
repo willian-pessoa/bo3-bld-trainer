@@ -26,6 +26,12 @@ export const solvesSlice = createSlice({
   name: "solves",
   initialState,
   reducers: {
+    resetSolves: (state) => {
+      return {
+        ...state,
+        solves: []
+      }
+    },
     insertTime: (state, action) => {
       return {
         ...state,
@@ -62,6 +68,7 @@ export const {
   updateCurrentScramble,
   updateChangeScramble,
   removeSolveById,
+  resetSolves,
 } = solvesSlice.actions
 
 export default solvesSlice.reducer

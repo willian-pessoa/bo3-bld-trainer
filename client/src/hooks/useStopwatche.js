@@ -5,6 +5,10 @@ const padStart = (num) => {
 }
 
 export const formatMs = (milliseconds) => {
+  if (milliseconds === "DNF") {
+    return "DNF"
+  }
+
   let seconds = Math.floor(milliseconds / 1000)
   let minutes = Math.floor(seconds / 60)
   let hours = Math.floor(minutes / 60)

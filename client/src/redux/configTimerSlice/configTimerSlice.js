@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  room: "bld",
+  room: "",
   twoPhases: false,
   showTime: true,
   bo3Session: 5,

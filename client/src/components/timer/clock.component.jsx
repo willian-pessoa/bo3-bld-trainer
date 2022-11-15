@@ -127,7 +127,7 @@ const Clock = ({ isTwoPhases, bo3Session, showTime }) => {
         spacePressed || timesSpacePressed ? "clock-active" : "clock"
       }`}
     >
-      <span className="space-tooltip">press SPACE to start</span>
+      <span className="space-tooltip">press SPACE to start/stop</span>
       {spacePressed || timesSpacePressed ? (showTime ? time : "...") : time}
       <div className="time-changers">
         <div onClick={() => handleTimeChangers("dnf")} className="dnf-button">

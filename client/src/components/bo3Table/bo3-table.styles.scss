@@ -1,0 +1,14 @@
+.custom-table {
+  border-color: #827717;
+  text-align: center;
+
+  .remove-border {
+    border-left: none;
+    border-right: none;
+  }
+
+  td{
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
