@@ -28,7 +28,9 @@ const Timer = () => {
         />
         <Clock
           showTime={configTimer.showTime}
-          bo3Session={configTimer.bo3Session * 3}
+          bo3Session={
+            configTimer.room === "mbld" ? 1 : configTimer.bo3Session * 3
+          }
           isTwoPhases={configTimer.twoPhases}
         />
       </div>
