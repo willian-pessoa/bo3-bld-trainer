@@ -21,7 +21,7 @@ const Clock = ({ isTwoPhases, bo3Session, showTime }) => {
   const currentScramble = useSelector((state) => state.solves.currentScramble);
   const spacePressed = useKeyPress(" ");
   const [timesSpacePressed, setTimesSpacePressed] = useState(0);
-  const solves = useSelector((state) => state.solves.solves)
+  const solves = useSelector((state) => state.solves.solves);
   //const [solves, setSolves] = useState([]);
   const {
     // actions
@@ -53,7 +53,7 @@ const Clock = ({ isTwoPhases, bo3Session, showTime }) => {
   const updateSolves = () => {
     const tempArr = JSON.parse(JSON.stringify(solves));
     const lastIndex = tempArr.length - 1;
-    const id = lastIndex === -1 ? 1 : tempArr[lastIndex].id + 1 
+    const id = lastIndex === -1 ? 1 : tempArr[lastIndex].id + 1;
     tempArr.push({
       id: id,
       scramble: currentScramble,
@@ -129,6 +129,9 @@ const Clock = ({ isTwoPhases, bo3Session, showTime }) => {
     >
       <span className="space-tooltip">press SPACE to start/stop</span>
       {spacePressed || timesSpacePressed ? (showTime ? time : "...") : time}
+      {timesSpacePressed === 3 && (
+        <span className="twoPhases-tooltip">{"-" + laps[0].time}</span>
+      )}
       <div className="time-changers">
         <div onClick={() => handleTimeChangers("dnf")} className="dnf-button">
           {spacePressed || timesSpacePressed ? "" : "DNF"}
@@ -137,7 +140,9 @@ const Clock = ({ isTwoPhases, bo3Session, showTime }) => {
           {spacePressed || timesSpacePressed ? "" : "+2"}
         </div>
       </div>
-      {solves.length === bo3Session && <Button onClick={() => handleSaveSession()}>Save Session</Button>}
+      {solves.length === bo3Session && (
+        <Button onClick={() => handleSaveSession()}>Save Session</Button>
+      )}
     </div>
   );
 };
